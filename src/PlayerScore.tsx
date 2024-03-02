@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import Score, { agricola_scores } from './Score'
+import Score from './Score'
+import { AGRICOLA_SCORING } from './AgricolaScoring'
 
 interface PlayerScore {
     playerNumber: number,
 }
 
-const scoreKeys =  Object.keys(agricola_scores);
+const scoreKeys =  Object.keys(AGRICOLA_SCORING);
 
 const getTallyIndex = () => {
   return new Array(scoreKeys.length).fill(0);

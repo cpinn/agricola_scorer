@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Scoreboard.css'
 import PlayerScore from './PlayerScore'
+import { AGRICOLA_SCORING } from './AgricolaScoring'
 
 interface Scoreboard {
     players: number,
@@ -8,17 +9,28 @@ interface Scoreboard {
 
 function Scoreboard({players} : Scoreboard) {
     const drawBoard = () => {
-        var indents = [];
-        for (var i = 0; i < players; i++) {
-          indents.push(
+        let playerBoard = [];
+        for (let i = 0; i < players; i++) {
+            playerBoard.push(
                 <PlayerScore playerNumber={i} key={i}/>
             );
         }
-        return indents;
+        return playerBoard;
+      }
+
+      const drawScoringFields = () => {
+        let scoringFieldNames = [];
+        let fieldNames = Object.values(AGRICOLA_SCORING);
+        for (let i = 0; i < fieldNames.length; i++) {
+            scoringFieldNames.push(
+                <div key={fieldNames[i]?.name} >{fieldNames[i]?.name}</div>
+            );
+        }
+        return scoringFieldNames;
       }
 
     const [board] = useState(drawBoard())
-
+    const [scoringFields] = useState(drawScoringFields())
 
 
   return (
@@ -26,20 +38,7 @@ function Scoreboard({players} : Scoreboard) {
       <div>{players}</div>
       <div className="scoreboard">
         <div>Name</div>
-        <div>Fields</div>
-        <div>Pastures</div>
-        <div>Grain</div>
-        <div>Vegetables</div>
-        <div>Sheep</div>
-        <div>Wild Boar</div>
-        <div>Cattle</div>
-        <div>Unused Spaces</div>
-        <div>Fenced Spaces</div>
-        <div>Clay House Rooms</div>
-        <div>Stone House Rooms</div>
-        <div>Family Members</div>
-        <div>Points For Cards</div>
-        <div>Bonus Points</div>
+        {scoringFields}
       </div>
       {board}
 
