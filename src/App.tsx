@@ -11,8 +11,9 @@ function App() {
     setPlayers(players + 1)
   }
 
-  const startScoring = () => {
-    
+  const resetGameState = () => {
+    setGame(false);
+    setPlayers(0);
   }
 
   return (
@@ -32,7 +33,14 @@ function App() {
         </>
       }
       { game &&
-        <Scoreboard players={players}/>
+        <>
+          <Scoreboard players={players}/>
+          <div className="card">
+            <button onClick={() => resetGameState()}>
+              Reset Game
+            </button>
+          </div>
+        </>
       }
     </>
   )
