@@ -43,7 +43,7 @@ function PlayerScore({playerNumber} : PlayerScore) {
           <div className="scoreboard">
               <div>Player {playerNumber + 1} </div>
               {board_types}
-              <div>{player_tally}</div>
+              <div className="totalScore">{player_tally}</div>
           </div>
       </>
   )

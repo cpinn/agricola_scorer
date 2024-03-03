@@ -21,11 +21,13 @@ function Scoreboard({players} : Scoreboard) {
       const drawScoringFields = () => {
         let scoringFieldNames = [];
         let fieldNames = Object.values(AGRICOLA_SCORING);
+        scoringFieldNames.push(<div className='field' key="name">Name</div>)
         for (let i = 0; i < fieldNames.length; i++) {
             scoringFieldNames.push(
-                <div key={fieldNames[i]?.name} >{fieldNames[i]?.name}</div>
+                <div className='field' key={fieldNames[i]?.name} >{fieldNames[i]?.name}</div>
             );
         }
+        scoringFieldNames.push(<div className='totalScore' key="totalScore">Total Score</div>)
         return scoringFieldNames;
       }
 
@@ -35,9 +37,7 @@ function Scoreboard({players} : Scoreboard) {
 
   return (
     <>
-      <div>{players}</div>
       <div className="scoreboard">
-        <div>Name</div>
         {scoringFields}
       </div>
       {board}

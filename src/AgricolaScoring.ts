@@ -76,6 +76,11 @@ const AGRICOLA_SCORING : any = {
     "point_multiplier": 1,
     "name": "Bonus Points"
   },
+  "beggingCards" : {
+    "type": SCORE_TYPE.MULTIPLIER,
+    "point_multiplier": -3,
+    "name": "Begging Cards"
+  },
 }
 
 export {

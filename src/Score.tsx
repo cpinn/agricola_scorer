@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './Score.css'
 import { AGRICOLA_SCORING, SCORE_TYPE, POINT_CALCULATION } from './AgricolaScoring' 
 
 interface Score {
@@ -15,6 +16,11 @@ function Score({type, index, onUpdate} : Score) {
   const fieldScore = (event: any) => {
     const scoringType: any = AGRICOLA_SCORING[type];
     let pointValue = event?.target.value;
+
+    if (pointValue > 30) {
+      pointValue = 0
+    }
+
     let totalPoints = 0;
     if (scoringType.type == SCORE_TYPE.MULTIPLIER) {
         totalPoints = pointValue * scoringType.point_multiplier
@@ -37,9 +43,8 @@ function Score({type, index, onUpdate} : Score) {
     return (
       <>
         <div>
-            <input type="text" pattern="[0-9]*"
-               onInput={(event) => fieldScore(event)} value={rawPoints} />
-            
+            <input className="scoreField" type="number" pattern="[0-9]*" min="0" max="30"
+               onInput={(event) => fieldScore(event)} value={rawPoints}/>
         </div>
       </>
     )
