@@ -15,7 +15,6 @@ const getTallyIndex = () => {
 function PlayerScore({playerNumber} : PlayerScore) {
     
   const onUpdate = (value: number, index: number) => {
-    console.log(value)
     const currentTallyIndex : number[] = tally_index;
     currentTallyIndex[index] = value;
     setTallyIndex(currentTallyIndex)

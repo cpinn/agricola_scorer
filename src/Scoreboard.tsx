@@ -41,7 +41,6 @@ function Scoreboard({players} : Scoreboard) {
         {scoringFields}
       </div>
       {board}
-
     </>
   )
 }

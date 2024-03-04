@@ -23,10 +23,7 @@ function App() {
         <>
           <Players players={players} onPlayersChanged={onPlayersChanged} />
           <div className="card">
-            <button disabled={players < 2} onClick={() => setGame((game) => {
-                console.log(game);
-              return game = true;
-              })}>
+            <button disabled={players < 2} onClick={() => setGame((game) => game = true)}>
               Start Scoring
             </button>
           </div>
